@@ -8,4 +8,3 @@ def magic_calculation(a, b):
         return c
     
     return (sub(a, b))
-__import__("dis").dis(magic_calculation)
