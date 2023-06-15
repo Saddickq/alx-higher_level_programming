@@ -1,13 +1,17 @@
 #!/usr/bin/python3
 def best_score(a_dictionary):
-    if a_dictionary:
-        best_key = max(a_dictionary, key=a_dictionary.get)
-        return (best_key)
-    else:
-        return
+    if not a_dictionary:
+        return None
+    maxv = float('-inf')
+    maxk = None
+    for k, v in a_dictionary.items():
+        if v > maxv:
+            maxk = k
+            maxv = v
+    return maxk
 
 
-a_dictionary = {'John': 12, 'Bob': 14, 'Mike': 14, 'Molly': 16, 'Adam': 10}
+a_dictionary = { "a": 1, "b": 2, "c": 3, "d": 4, "e": 5 }
 best_key = best_score(a_dictionary)
 print("Best score: {}".format(best_key))
 
