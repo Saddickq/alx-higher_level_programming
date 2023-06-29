@@ -20,7 +20,7 @@ class Square:
         """A property to set thee attribute"""
         if not isinstance(value, int):
             raise TypeError("size must be an integer")
-        elif (value < 0):
+        if (value < 0):
             raise ValueError("size must be >= 0")
         self.__size = value
 
@@ -49,12 +49,12 @@ class Square:
         if self.__size == 0:
             print()
             return
-        else:
-            for i in range(self.__position[1]):
-                print()
-            for j in range(self.__size):
-                for x in range(self.__position[0]):
-                    print(" ", end="")
-                for y in range(self.__size):
-                    print("#", end="")
-                print()
+        
+        for i in range(self.__position[1]):
+            print()
+        for j in range(self.__size):
+            for x in range(self.__position[0]):
+                print(" ", end="")
+            for y in range(self.__size):
+                print("#", end="")
+            print()
