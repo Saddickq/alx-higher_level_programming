@@ -21,11 +21,3 @@ def matrix_divided(matrix, div):
             inner_list.append(round(num / div, 2))
         outer_list.append(inner_list)
     return (outer_list)
-
-
-matrix = [
-    [1, 2, 3],
-    [4, 5, 6]
-]
-print(matrix_divided(matrix, 3))
-print(matrix)
