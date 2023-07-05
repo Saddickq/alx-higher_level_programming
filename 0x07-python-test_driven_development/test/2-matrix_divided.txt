@@ -1,4 +1,7 @@
->>> matrix_divided = __import___("2-matrix_divided").matrix_divided
+Test cases for the module 2-matrix_divided
+
+>>> matrix_divided = __import__("2-matrix_divided").matrix_divided
+
 >>> matrix_divided([[9, 5, 7], [2, 3, 4]], 2)
 [[4.5, 2.5, 3.5], [1.0, 1.5, 2.0]]
 >>> matrix_divided([[]], 2)
