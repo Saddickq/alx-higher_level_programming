@@ -1,4 +1,11 @@
 #!/usr/bin/python3
+
+"""
+A module that introduces the user with
+their first and last name
+"""
+
+
 def say_my_name(first_name, last_name=""):
     """A function that prints the full name of a person
     Args:

@@ -5,6 +5,8 @@ module indents a sample text
 
 
 def text_indentation(text):
+    """A function that indents a text"""
+
     if not isinstance(text, str):
         raise TypeError("text must be a string")
 

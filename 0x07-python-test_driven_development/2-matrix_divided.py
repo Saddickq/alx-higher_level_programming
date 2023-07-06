@@ -1,5 +1,12 @@
 #!/usr/bin/python3
+"""
+A module that divides a matrix
+"""
+
+
 def matrix_divided(matrix, div):
+    """A function that divide a matrix with the number div"""
+
     outer_list = []
     if div == 0:
         raise ZeroDivisionError("division by zero")

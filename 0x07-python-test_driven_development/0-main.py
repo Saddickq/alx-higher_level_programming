@@ -1,2 +1,2 @@
 import doctest
-doctest.testfile("test/0-add_integer.txt")
+doctest.testfile("tests/0-add_integer.txt")
