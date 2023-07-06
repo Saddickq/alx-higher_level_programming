@@ -1,8 +1,13 @@
 #!/usr/bin/python3
+"""
+module indents a sample text
+"""
+
+
 def text_indentation(text):
     if not isinstance(text, str):
         raise TypeError("text must be a string")
-    
+
     length = len(text)
     j = 0
     for i in range(length):
