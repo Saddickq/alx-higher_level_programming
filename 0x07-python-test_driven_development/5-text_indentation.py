@@ -19,4 +19,3 @@ def text_indentation(text):
                 print("\n")
                 j += 1
         j += 1
-    print()
