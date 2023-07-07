@@ -5,7 +5,7 @@ module that prints a square
 """
 
 
-def print_square(size):
+def print_square(size=0):
     """A function that prints a square"""
     if (size == 0):
         return (None)
