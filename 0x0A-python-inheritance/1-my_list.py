@@ -5,7 +5,7 @@ prints a list in ascending order
 """
 
 
-class Mylist(list):
+class MyList(list):
     """
     A class that inherits from the class list
     """
@@ -14,6 +14,7 @@ class Mylist(list):
         """
         Public instance method
         """
+
         list_copy = self.copy()
         list_copy.sort()
         print(list_copy)
