@@ -18,7 +18,7 @@ class BaseGeometry:
         public instance method
         """
 
-        if not isinstance(value, int):
+        if not type(value) is int:
             raise TypeError("{} must be an integer".format(name))
         if value <= 0:
             raise ValueError("{} must be greater than 0".format(name))
