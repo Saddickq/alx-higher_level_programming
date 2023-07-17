@@ -4,6 +4,9 @@ A defined called Base
 """
 
 
+import json
+
+
 class Base:
     """ Public class attribute """
     __nb_objects = 0
@@ -15,3 +18,11 @@ class Base:
         else:
             Base.__nb_objects += 1
             self.id = Base.__nb_objects
+
+    @staticmethod
+    def to_json_string(list_dictionaries):
+        """ json manipulation of data """
+        size = len(list_dictionaries)
+        if list_dictionaries is None or size == 0:
+            return ("[]")
+        return (json.dumps(list_dictionaries))
