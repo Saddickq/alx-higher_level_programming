@@ -23,6 +23,6 @@ class Base:
     def to_json_string(list_dictionaries):
         """ json manipulation of data """
         size = len(list_dictionaries)
-        if list_dictionaries is None or size <= 0:
+        if list_dictionaries == None or size <= 0:
             return ("[]")
         return (json.dumps(list_dictionaries))
