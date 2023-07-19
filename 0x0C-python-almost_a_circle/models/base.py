@@ -24,15 +24,19 @@ class Base:
         """ json manipulation of data """
         size = len(list_dictionaries)
         if list_dictionaries is None or size == 0:
-            return ("[]")
-        return (json.dumps(list_dictionaries))
+            return "[]"
+        return json.dumps(list_dictionaries)
 
     @classmethod
     def save_to_file(cls, list_objs):
         """ save list objects into a json file """
         filename = cls.__name__ + ".json"
-        obj_list = [obj.to_dictionary for obj in list_objs]
-        json_string = cls.to_json_string(obj_list)
+
+        if list_objs is None or len(list_objs) == 0:
+            json_string = "[]"
+        else:
+            obj_list = [obj.to_dictionary() for obj in list_objs]
+            json_string = cls.to_json_string(obj_list)
 
         with open(filename, mode="w") as my_file:
             my_file.write(json_string)
