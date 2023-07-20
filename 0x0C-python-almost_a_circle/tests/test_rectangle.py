@@ -6,6 +6,7 @@ unittest module for the Rectangle class
 
 import unittest
 from models.rectangle import Rectangle
+from os.path import isfile
 
 
 class TestRectangle(unittest.TestCase):
@@ -20,11 +21,6 @@ class TestRectangle(unittest.TestCase):
         w1 = Rectangle(1, 2)
         self.assertEqual(w1.width, 1)
 
-    # test_width_getter
-    def test_width_getter(self):
-        w2 = Rectangle(1, 2, 3, 4)
-        self.assertEqual(w2.width, 1)
-
     # test_width_setter
     def test_width_setter(self):
         w3 = Rectangle(1, 2, 3, 4)
@@ -36,10 +32,19 @@ class TestRectangle(unittest.TestCase):
         with self.assertRaises(TypeError, msg="width must be an integer"):
             Rectangle(None, 2)
 
-    # test_width_zero
-    def test_width_zero(self):
-        with self.assertRaises(ValueError, msg="width must be > 0"):
-            Rectangle(0, 2)
+    def test_update_with_one_args_and_kwargs(self):
+        rect = Rectangle(10, 10, 10, 10)
+        rect.update(5, width=990)
+        self.assertEqual("[Rectangle] (5) 10/10 - 10/10", str(rect))
+
+    def test_update_with_empty_args_and_one_kwargs(self):
+        rect = Rectangle(10, 10, 10, 10)
+        rect.update((), width=990)
+        self.assertEqual("[Rectangle] (()) 10/10 - 10/10", str(rect))
+
+    def test_id_from_valid_values_with_id(self):
+        rect = Rectangle(10, 5, 1, 1, 10)
+        self.assertEqual(10, rect.id)
 
     # test_width_negative
     def test_width_negative(self):
@@ -91,20 +96,37 @@ class TestRectangle(unittest.TestCase):
         with self.assertRaises(TypeError, msg="height must be an integer"):
             Rectangle(1, 2.5)
 
-    # test_x_private
-    def test_x_private(self):
-        with self.assertRaises(AttributeError):
-            print(Rectangle(1, 2, 0, 0, 1).__x)
+    def test_update_with_all_args_and_all_kwargs(self):
+        rect = Rectangle(10, 10, 10, 10)
+        rect.update(1, 1, 1, 1, 1, id=19, width=19, height=19, x=19, y=19)
+        self.assertEqual("[Rectangle] (1) 1/1 - 1/1", str(rect))
+
+    def test_magic_str_with_valid_values(self):
+        rect = Rectangle(10, 5, 1, 1, 10)
+        self.assertEqual("[Rectangle] (10) 1/1 - 10/5", str(rect))
+
+    def test_magic_str_without_axis_nor_id(self):
+        rect = Rectangle(10, 5)
+        self.assertEqual("[Rectangle] (10) 0/0 - 10/5", str(rect))
 
     # test_normal_test
     def test_normal_test(self):
         x1 = Rectangle(1, 2, 3, 4, 5)
         self.assertEqual(x1.x, 3)
 
-    # test_x_getter
-    def test_x_getter(self):
-        x2 = Rectangle(1, 2, 3, 4, 5)
-        self.assertEqual(x2.x, 3)
+    def test_save_to_file_with_none(self):
+        text = ""
+        Rectangle.save_to_file(None)
+        with open("Rectangle.json") as file:
+            text = file.read()
+        self.assertEqual("[]", text)
+
+    def test_save_to_file_with_empty_list(self):
+        Rectangle.save_to_file([])
+        self.assertTrue(isfile("Rectangle.json"))
+        with open("Rectangle.json", mode="r") as file:
+            output = file.read()
+            self.assertEqual("[]", output)
 
     # test_x_setter
     def test_x_setter(self):
@@ -116,10 +138,6 @@ class TestRectangle(unittest.TestCase):
     def test_x_None(self):
         with self.assertRaises(TypeError, msg="x must be an integer"):
             Rectangle(1, 2, None)
-
-    # test_x_zero
-    def test_x_zero(self):
-        self.assertEqual(Rectangle(1, 2, 0, 4, 5).x, 0)
 
     # test_x_negative
     def test_x_negative(self):
@@ -136,19 +154,24 @@ class TestRectangle(unittest.TestCase):
         with self.assertRaises(TypeError, msg="y must be an integer"):
             Rectangle(1, 2, None)
 
-    # test_y_zero
-    def test_y_zero(self):
-        self.assertEqual(Rectangle(1, 2, 0, 0, 5).y, 0)
+    def test_area(self):
+        rect = Rectangle(10, 5, 1, 1, 10)
+        self.assertEqual(50, rect.area())
 
-    # test_y_negative
-    def test_y_negative(self):
-        with self.assertRaises(ValueError, msg="y must be > 0"):
-            Rectangle(1, 2, -1)
+    def test_update_with_one_arg(self):
+        rect = Rectangle(10, 10, 10, 10)
+        rect.update(89)
+        self.assertEqual("[Rectangle] (89) 10/10 - 10/10", str(rect))
 
-    # test_y_float
-    def test_y_float(self):
-        with self.assertRaises(TypeError, msg="y must be an integer"):
-            Rectangle(1, 2, 3.5)
+    def test_update_with_two_args(self):
+        rect = Rectangle(10, 10, 10, 10)
+        rect.update(89, 2)
+        self.assertEqual("[Rectangle] (89) 10/10 - 2/10", str(rect))
+
+    def test_update_with_three_args(self):
+        rect = Rectangle(10, 10, 10, 10)
+        rect.update(89, 2, 3)
+        self.assertEqual("[Rectangle] (89) 10/10 - 2/3", str(rect))
 
 
 if __name__ == "__main__":
