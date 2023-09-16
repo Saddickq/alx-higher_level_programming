@@ -17,7 +17,8 @@ def main():
             user=username,
             passwd=password,
             port=3306,
-            db=database
+            db=database,
+            charset="utf8"
         )
     cur = db.cursor()
     msg = "SELECT * FROM states WHERE name LIKE '{}%' ORDER BY id ASC"
