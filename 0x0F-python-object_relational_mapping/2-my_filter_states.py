@@ -18,10 +18,9 @@ def main():
             passwd=password,
             port=3306,
             db=database,
-            charset="utf8"
         )
     cur = db.cursor()
-    msg = "SELECT * FROM states WHERE name LIKE '{}%' ORDER BY id ASC"
+    msg = "SELECT * FROM states WHERE BINARY name LIKE '{}%' ORDER BY id ASC"
     sql_query = msg.format(match)
     cur.execute(sql_query)
     query = cur.fetchall()
