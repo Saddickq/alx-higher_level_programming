@@ -20,8 +20,9 @@ def main():
             db=database
         )
     cur = db.cursor()
-    sql_query = "SELECT * FROM states WHERE name LIKE %s ORDER BY id ASC"
-    cur.execute(sql_query, (match,))
+    msg = "SELECT * FROM states WHERE name LIKE '{}' ORDER BY id ASC"
+    sql_query = msg.format(match)
+    cur.execute(sql_query)
     query = cur.fetchall()
     for row in query:
         print(row)
