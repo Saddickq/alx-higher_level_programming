@@ -19,7 +19,7 @@ def main():
             host='localhost',
             db=database
     )
-    sql_query = "SELECT * FROM states WHERE name LIKE 'N%' ORDER BY id ASC"
+    sql_query = "SELECT * FROM states WHERE BINARY name LIKE 'N%' ORDER BY id ASC"
     cur = db.cursor()
     cur.execute(sql_query)
     query = cur.fetchall()
