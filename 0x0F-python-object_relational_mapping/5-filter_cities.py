@@ -20,10 +20,12 @@ def main():
             port=3306
     )
     cur = db.cursor()
-    sql = "SELECT cities.name FROM cities JOIN states ON cities.state_id = states.id WHERE states.name = %s"
+    sql = "SELECT cities.name FROM cities\
+            JOIN states ON cities.state_id = states.id WHERE states.name = %s"
     cur.execute(sql, (state,))
     query = cur.fetchall()
-    print(query)
+    city = ', '.join(row[0] for row in query)
+    print(city)
 
     cur.close()
     db.close()
