@@ -20,7 +20,7 @@ def main():
         session = create_session()
 
         state = State(name="California")
-        city = City(name="San Francisco", state=state)
+        city = City(name="San Francisco", state_id=state.id)
 
         session.add(state, city)
         session.commit()
