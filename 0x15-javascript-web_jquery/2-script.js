@@ -1,5 +1,5 @@
-const header = $('#red_header')
+const header = $('#red_header');
 header.click(() => {
-    const main = $('header')
-    main.css('color', 'red')
-})
+  const main = $('header');
+  main.css('color', 'red');
+});

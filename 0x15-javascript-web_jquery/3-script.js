@@ -1,5 +1,4 @@
-const header = $('#red_header')
+const header = $('#red_header');
 header.click(() => {
-    $('header').addClass('red')
-
-})
+  $('header').addClass('red');
+});
